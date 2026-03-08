@@ -1,11 +1,15 @@
 #!/bin/bash
-sudo pacman -S fish fastfetch nano vlc base base-devel eog wget curl networkmanager openssh firefox dolphin plasma konsole git bat flatpak android-tools android-udev heimdall gvfs gvfs-mtp ark power-profiles-daemon python wine wine-mono winetricks --needed --noconfirm
+sudo pacman -S fish fastfetch nano vlc base base-devel eog wget curl networkmanager openssh firefox dolphin plasma konsole git bat flatpak android-tools android-udev heimdall gvfs gvfs-mtp ark power-profiles-daemon python wine wine-mono winetricks--needed --noconfirm
 rm -rf ~yay
 cd
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
-yay -S localsend-bin ventoy-bin balena-etcher kde-material-you-colors vesktop --noconfirm
+yay -S localsend-bin --noconfirm
+yay -S ventoy-bin --noconfirm
+yay -S balena-etcher --noconfirm
+yay -S kde-material-you-colors --noconfirm
+yay -S vesktop --noconfirm
 cd
 mkdir -p ~/.config/fish
 (
@@ -38,21 +42,4 @@ echo '"colors"'
 echo "]"
 echo "}"
 ) > ~/.config/fastfetch/config.jsonc 
-PS3='Choose The Next Option'
-options=("Reboot System" "Go To Login Screen")
-select opt in "${options[@]}"
-do
-case $opt in
-"Reboot System"
-echo "Rebooting!"
-sleep 2
 sudo reboot now
-;;
-"Go To Log In Screen"
-sudo systemctl restart sddm.service
-;;
-*)
-echo "Invalid Option: $REPLY"
-;;
-esac
-done
