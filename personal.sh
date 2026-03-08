@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo pacman -S fish fastfetch nano vlc eog wget curl networkmanager openssh firefox dolphin plasma konsole git bat flatpak android-tools android-udev heimdall gvfs gvfs-mtp ark power-profiles-daemon
+sudo pacman -S fish fastfetch nano base base-devel vlc eog wget curl networkmanager openssh firefox dolphin plasma konsole git bat flatpak android-tools android-udev heimdall gvfs gvfs-mtp ark power-profiles-daemon --needed --noconfirm
 rm -rf ~yay
 cd
 git clone https://aur.archlinux.org/yay.git
