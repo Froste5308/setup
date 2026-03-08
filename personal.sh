@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo pacman -S fish fastfetch nano base base-devel vlc eog wget curl networkmanager openssh firefox dolphin plasma konsole git bat flatpak android-tools android-udev heimdall gvfs gvfs-mtp ark power-profiles-daemon --needed --noconfirm
+sudo pacman -S fish fastfetch nano vlc base base-devel eog wget curl networkmanager openssh firefox dolphin plasma konsole git bat flatpak android-tools android-udev heimdall gvfs gvfs-mtp ark power-profiles-daemon --needed --noconfirm
 rm -rf ~yay
 cd
 git clone https://aur.archlinux.org/yay.git
@@ -38,3 +38,21 @@ echo '"colors"'
 echo "]"
 echo "}"
 ) > ~/.config/fastfetch/config.jsonc 
+PS3='Choose The Next Option'
+options=("Reboot System" "Go To Login Screen")
+select opt in "${options[@]}"
+do
+case $opt in
+"Reboot System"
+echo "Rebooting!"
+sleep 2
+sudo reboot now
+;;
+"Go To Log In Screen"
+sudo systemctl restart sddm.service
+;;
+*)
+echo "Invalid Option: $REPLY"
+;;
+esac
+done
