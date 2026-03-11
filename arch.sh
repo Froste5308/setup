@@ -43,4 +43,5 @@ echo '"colors"'
 echo "]"
 echo "}"
 ) > ~/.config/fastfetch/config.jsonc 
+chsh -s /usr/bin/fish
 sudo reboot now
